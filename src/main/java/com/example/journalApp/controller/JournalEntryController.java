@@ -8,11 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
 @RestController
 @RequestMapping("/journals")
 public class JournalEntryController {
 
-    private Map<Long, JournalEntry> journalEntries = new HashMap<>();
+    private Map<String, JournalEntry> journalEntries = new HashMap<>();
 
     @GetMapping
     public List<JournalEntry> getAll() {
@@ -20,7 +21,7 @@ public class JournalEntryController {
     }
 
     @GetMapping("/id/{myId}")
-    public JournalEntry getEntryById(@PathVariable Long myId)
+    public JournalEntry getEntryById(@PathVariable String myId)
     {
         return journalEntries.get(myId);
     }
@@ -30,4 +31,13 @@ public class JournalEntryController {
         journalEntries.put(myEntry.getId(), myEntry);
         return true;
     }
+
+    @PutMapping
+    public boolean updateJournalById(@PathVariable String id, @RequestBody JournalEntry myEntry)
+    {
+
+        return true;
+    }
 }
+
+ */
