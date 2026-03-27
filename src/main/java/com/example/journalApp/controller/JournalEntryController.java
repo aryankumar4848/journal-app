@@ -77,10 +77,10 @@ public class JournalEntryController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/id/{myId}")
-    public ResponseEntity<Void> deleteJournalEntryById(@PathVariable ObjectId myId)
+    @DeleteMapping("/id/{userName}/{myId}")
+    public ResponseEntity<Void> deleteJournalEntryById(@PathVariable ObjectId myId, @PathVariable String userName)
     {
-        journalEntryService.deleteById(myId);
+        journalEntryService.deleteById(myId, userName);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
