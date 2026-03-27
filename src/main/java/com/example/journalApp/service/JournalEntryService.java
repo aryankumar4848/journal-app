@@ -29,6 +29,11 @@ public class JournalEntryService {
         userService.saveEntry(user);
     }
 
+    public void saveEntry(JournalEntry journalEntry)
+    {
+        journalEntryRepository.save(journalEntry);
+    }
+
     public List<JournalEntry> getAll() {
         return journalEntryRepository.findAll();
     }
@@ -39,7 +44,7 @@ public class JournalEntryService {
 
     public void deleteById(ObjectId myId, String userName) {
         User user = userService.findByUserName(userName);
-        user.getJournalEntries().removeIf(x -> x.getId().equals(myId));
+        user.getJournalEntries().removeIf(x -> x.getId().equals(myId)); // Responsible for delete cascading
         userService.saveEntry(user);
         journalEntryRepository.deleteById(myId);
     }

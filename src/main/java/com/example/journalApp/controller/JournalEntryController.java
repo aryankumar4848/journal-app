@@ -63,16 +63,16 @@ public class JournalEntryController {
     }
 
     @PutMapping("/id/{myId}")
-    public ResponseEntity<JournalEntry> updateJournalById(@PathVariable ObjectId myId, @RequestBody JournalEntry newEntry)
+    public ResponseEntity<JournalEntry> updateJournalById(@PathVariable ObjectId myId, @RequestBody JournalEntry newEntry, @PathVariable String userName)
     {
-//        JournalEntry old = journalEntryService.findById(myId).orElse(null);
-//        if (old != null)
-//        {
-//            old.setTitle(newEntry.getTitle() != null && !newEntry.getTitle().equals("") ? newEntry.getTitle() : old.getTitle());
-//            old.setContent(newEntry.getContent() != null && !newEntry.getContent().equals("") ? newEntry.getContent() : old.getContent());
-//            journalEntryService.saveEntry(old, user);
-//            return new ResponseEntity<>(old, HttpStatus.OK);
-//        }
+        JournalEntry old = journalEntryService.findById(myId).orElse(null);
+        if (old != null)
+        {
+            old.setTitle(newEntry.getTitle() != null && !newEntry.getTitle().equals("") ? newEntry.getTitle() : old.getTitle());
+            old.setContent(newEntry.getContent() != null && !newEntry.getContent().equals("") ? newEntry.getContent() : old.getContent());
+            journalEntryService.saveEntry(old);
+            return new ResponseEntity<>(old, HttpStatus.OK);
+        }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
